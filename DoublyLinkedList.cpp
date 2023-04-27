@@ -152,6 +152,16 @@ class DoublyLinkedList{
             length++;
             return true;
         }
+        void deleteNode(int index){
+            if (index < 0 || index >= length) return;
+            if (index == 0) return deleteFirst();
+            if (index == length - 1) return deleteLast();
+            Node* temp = get(index);
+            temp->next->prev = temp->prev;
+            temp->prev->next = temp->next;
+            delete temp;
+            length--;
+        }
 };
 int main(){
     return 0;
